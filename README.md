@@ -6,7 +6,7 @@
 
 ### 1. Initialize the Source Repository
 ```bash
-# Create working directory
+# Create BlazeAOSP directory
 mkdir -p ~/blaze && cd ~/blaze
 
 # Initialize BlazeAOSP 17.0 manifest
@@ -22,6 +22,9 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 ```bash
 # Set up build environment
 source build/envsetup.sh
+
+#set POSIX standarts
+export LC_ALL=C
 
 # Select your device target (replace <device_codename> with your device e.g. bluejay, cheetah, etc.)
 lunch lineage_<device_codename>-cp2a-userdebug
@@ -40,7 +43,7 @@ To build BlazeAOSP from source, your workstation should meet the following minim
 | :--- | :--- | :--- |
 | **OS** | Linux (BlazeOS Debian/Fedora series, Debian 12, Arch , Ubuntu) | BlazeOS Debian/Fedora series |
 | **CPU** | 8 Cores / 16 Threads | 16+ Cores (AMD Ryzen / Intel Core i7/i9) |
-| **RAM** | 16 GB (+ 16 GB Swap) | 32 GB – 64 GB RAM |
+| **RAM** | 16 GB (+ 16 GB Swap) (zRAM recommended) | 32 GB – 64 GB RAM |
 | **Storage** | 400 GB Free Space | 500 GB+ NVMe SSD |
 | **Java** | OpenJDK 17 | OpenJDK 17 |
 
