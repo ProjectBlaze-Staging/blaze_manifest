@@ -2,36 +2,70 @@
 
 ---
 
-## Building Blaze !
+## Build BlazeAOSP
 
-### 1. Initialize the Source Repository
+### Vanilla: sync and build
+
+This downloads only the public Blaze/AOSP/Lineage sources and produces a ROM
+without Google apps.
+
 ```bash
-# Create BlazeAOSP directory
 mkdir -p ~/blaze && cd ~/blaze
-
-# Initialize BlazeAOSP 17.0 manifest
 repo init -u https://github.com/ProjectBlaze-Staging/blaze_manifest.git -b 17.0
-```
-
-### 2. Sync the Source Code
-```bash
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
-```
 
-### 3. Build the System
-```bash
-# Set up build environment
+# Firefox is stored with Git LFS in android_vendor_blaze.
+git lfs install
+git -C vendor/lineage lfs pull
+
 source build/envsetup.sh
-
-#set POSIX standarts
 export LC_ALL=C
-
-# Select your device target (replace <device_codename> with your device e.g. bluejay, cheetah, etc.)
-lunch lineage_<device_codename>-cp2a-userdebug
-
-# Start compilation
+export BLAZE_BUILD_VARIANT=vanilla
+lunch lineage_bluejay-cp2a-userdebug
 m bacon -j$(nproc --all)
 ```
+
+### LiteGApps-integrated: sync and build
+
+The public source sync is the same, but this variant additionally requires an
+authorized Android 17-compatible partner tree. The public LiteGApps installer
+repository is not a `vendor/partner_gms` source tree. Blaze does not download
+or redistribute proprietary Google APKs.
+
+```bash
+mkdir -p ~/blaze && cd ~/blaze
+repo init -u https://github.com/ProjectBlaze-Staging/blaze_manifest.git -b 17.0
+repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
+
+git lfs install
+git -C vendor/lineage lfs pull
+
+# Set this to your team's authorized partner source and branch.
+: "${PARTNER_GMS_URL:?Set PARTNER_GMS_URL to the authorized partner repository}"
+git clone --depth=1 -b "${PARTNER_GMS_BRANCH:-17.0}" \
+    "$PARTNER_GMS_URL" vendor/partner_gms
+test -f vendor/partner_gms/products/gms_minimal.mk
+
+source build/envsetup.sh
+export LC_ALL=C
+export BLAZE_BUILD_VARIANT=litegapps
+export GMS_MAKEFILE=gms_minimal.mk
+lunch lineage_bluejay-cp2a-userdebug
+m bacon -j$(nproc --all)
+```
+
+The two variants use the same reviewed source revision. The build fails early
+if the LiteGApps partner tree is missing, which prevents a mislabeled vanilla
+image from being released as LiteGApps.
+
+## Pixel 6a installation and DSU
+
+Read [the bluejay preparation and boot troubleshooting guide](docs/bluejay-preparation.md)
+before installing. Do not mix `boot.img`, `dtbo.img`, or `vendor_boot.img`
+from EvolutionX, Infinity-X, stock, or another Blaze build.
+
+The recovery improvement work is tracked in the
+[bluejay recovery roadmap](docs/bluejay-recovery-roadmap.md).
 
 ---
 
@@ -45,7 +79,7 @@ To build BlazeAOSP from source, your workstation should meet the following minim
 | **CPU** | 8 Cores / 16 Threads | 16+ Cores (AMD Ryzen / Intel Core i7/i9) |
 | **RAM** | 16 GB (+ 16 GB Swap) (zRAM recommended) | 32 GB – 64 GB RAM |
 | **Storage** | 400 GB Free Space | 500 GB+ NVMe SSD |
-| **Java** | OpenJDK 17 | OpenJDK 17 |
+| **Java** | The JDK selected by the Android build environment | Use the bundled/prebuilt JDK |
 
 [**Upgrade to BlazeOS**](https://github.com/DarkMorpheus-pc/Blaze-Galaxy)
 
