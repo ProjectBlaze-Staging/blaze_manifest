@@ -11,12 +11,10 @@ without Google apps.
 
 ```bash
 mkdir -p ~/blaze && cd ~/blaze
-repo init -u https://github.com/ProjectBlaze-Staging/blaze_manifest.git -b 17.0
+repo init -u https://github.com/ProjectBlaze-Staging/blaze_manifest.git -b 17.0 --git-lfs
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
 # Firefox is stored with Git LFS in android_vendor_blaze.
-git lfs install
-git -C vendor/lineage lfs pull
 
 source build/envsetup.sh
 export LC_ALL=C
