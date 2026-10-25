@@ -32,11 +32,9 @@ or redistribute proprietary Google APKs.
 
 ```bash
 mkdir -p ~/blaze && cd ~/blaze
-repo init -u https://github.com/ProjectBlaze-Staging/blaze_manifest.git -b 17.0
+repo init -u https://github.com/ProjectBlaze-Staging/blaze_manifest.git -b 17.0 --git-lfs
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
-git lfs install
-git -C vendor/lineage lfs pull
 
 # Set this to your team's authorized partner source and branch.
 : "${PARTNER_GMS_URL:?Set PARTNER_GMS_URL to the authorized partner repository}"
