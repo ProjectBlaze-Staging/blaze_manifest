@@ -19,7 +19,7 @@ repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync 
 source build/envsetup.sh
 export LC_ALL=C
 export BLAZE_BUILD_VARIANT=vanilla
-lunch lineage_bluejay-cp2a-userdebug
+lunch lineage_<device>-cp2a-userdebug
 m bacon -j$(nproc --all)
 ```
 
