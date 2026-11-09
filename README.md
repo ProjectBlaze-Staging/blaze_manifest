@@ -14,6 +14,9 @@ mkdir -p ~/blaze && cd ~/blaze
 repo init -u https://github.com/ProjectBlaze-Staging/blaze_manifest.git -b 17.0 --git-lfs
 repo sync -c --no-clone-bundle --no-tags --optimized-fetch --prune --force-sync -j$(nproc --all)
 
+# Apply ProjectBlaze 17.0 patches (Aperture, System/Core, AV, BPF, Connectivity, Sepolicy)
+bash vendor/blaze/patches/17.0/apply_patches.sh
+
 # Firefox is stored with Git LFS in android_vendor_blaze.
 
 source build/envsetup.sh
