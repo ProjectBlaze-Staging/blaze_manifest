@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Build & Vendor -->
+  <project path="build/make" name="android_build" groups="pdk,sysui-studio" remote="blaze" revision="17.0">
+    <linkfile src="CleanSpec.mk" dest="build/CleanSpec.mk" />
+    <linkfile src="buildspec.mk.default" dest="build/buildspec.mk.default" />
+    <linkfile src="core" dest="build/core" />
+    <linkfile src="envsetup.sh" dest="build/envsetup.sh" />
+    <linkfile src="target" dest="build/target" />
+    <linkfile src="tools" dest="build/tools" />
+  </project>
+  <project path="build/release" name="android_build_release" groups="pdk,tradefed,sysui-studio" remote="blaze" revision="17.0" />
+  <project path="build/soong" name="android_build_soong" groups="pdk,tradefed,sysui-studio" remote="blaze" revision="17.0" />
+  <project path="bootable/recovery" name="android_bootable_recovery" groups="pdk" remote="blaze" revision="17.0" />
+
+  <project path="device/blaze/sepolicy" name="android_device_blaze_sepolicy" remote="blaze" revision="17.0" />
+  <project path="vendor/blaze" name="android_vendor_blaze" remote="blaze" revision="17.0" />
+  <project path="vendor/lineage" name="android_vendor_lineage" remote="blaze" revision="17.0" />
+  <project path="lineage-sdk" name="android_lineage-sdk" remote="blaze" revision="17.0" />
+
+  <!-- Frameworks -->
+  <project path="frameworks/av" name="android_frameworks_av" groups="pdk,sysui-studio" remote="blaze" revision="17.0" />
+  <project path="frameworks/base" name="android_frameworks_base" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="blaze" revision="17.0" />
+  <project path="frameworks/libs/systemui" name="android_frameworks_libs_systemui" groups="pdk-cw-fs,pdk-fs,sysui-studio" remote="blaze" revision="17.0" />
+  <project path="frameworks/native" name="android_frameworks_native" groups="pdk,sysui-studio" remote="blaze" revision="17.0" />
+  <project path="frameworks/opt/telephony" name="android_frameworks_opt_telephony" groups="pdk,sysui-studio" remote="blaze" revision="17.0" />
+
+  <!-- Apps -->
+  <project path="packages/apps/Aperture" name="android_packages_apps_Aperture" remote="blaze" revision="17.0" />
+  <project path="packages/apps/AudioFX" name="android_packages_apps_AudioFX" remote="blaze" revision="17.0" />
+  <project path="packages/apps/Backgrounds" name="android_packages_apps_Backgrounds" remote="blaze" revision="17.0" />
+  <project path="packages/apps/DocumentsUI" name="android_packages_apps_DocumentsUI" groups="pdk-cw-fs,pdk-fs" remote="blaze" revision="17.0" />
+  <project path="packages/apps/GoogleWeather" name="android_packages_apps_GoogleWeather" remote="blaze" revision="17.0" />
+  <project path="packages/apps/Launcher3" name="android_packages_apps_Launcher3" groups="pdk-fs,sysui-studio,pdk-cw-tvc" remote="blaze" revision="17.0" />
+  <project path="packages/apps/Settings" name="android_packages_apps_Settings" groups="pdk-fs,pdk-cw-tvc,sysui-studio" remote="blaze" revision="17.0" />
+  <project path="packages/apps/SetupWizard" name="android_packages_apps_SetupWizard" remote="blaze" revision="17.0" />
+  <project path="packages/apps/Updater" name="android_packages_apps_Updater" remote="blaze" revision="17.0" />
+
+  <!-- System & Connectivity -->
+  <project path="packages/modules/Connectivity" name="android_packages_modules_Connectivity" groups="pdk-cw-fs,pdk-fs" remote="blaze" revision="17.0" />
+  <project path="system/vold" name="android_system_vold" groups="pdk" remote="blaze" revision="17.0" />
+</manifest>

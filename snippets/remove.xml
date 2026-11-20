@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<manifest>
+  <!-- Remove AOSP / LineageOS projects replaced by ProjectBlaze forks -->
+  <remove-project name="LineageOS/android_build" />
+  <remove-project name="LineageOS/android_build_soong" />
+  <remove-project name="platform/build/release" />
+  <remove-project name="LineageOS/android_bootable_recovery" />
+  <remove-project name="LineageOS/android_lineage-sdk" />
+
+  <remove-project name="LineageOS/android_frameworks_av" />
+  <remove-project name="LineageOS/android_frameworks_base" />
+  <remove-project name="LineageOS/android_frameworks_libs_systemui" />
+  <remove-project name="LineageOS/android_frameworks_native" />
+  <remove-project name="LineageOS/android_frameworks_opt_telephony" />
+
+  <remove-project name="LineageOS/android_packages_apps_Aperture" />
+  <remove-project name="LineageOS/android_packages_apps_AudioFX" />
+  <remove-project name="LineageOS/android_packages_apps_Backgrounds" />
+  <remove-project name="LineageOS/android_packages_apps_DocumentsUI" />
+  <remove-project name="LineageOS/android_packages_apps_Launcher3" />
+  <remove-project name="LineageOS/android_packages_apps_Settings" />
+  <remove-project name="LineageOS/android_packages_apps_SetupWizard" />
+  <remove-project name="LineageOS/android_packages_apps_Updater" />
+
+  <remove-project name="LineageOS/android_packages_modules_Connectivity" />
+  <remove-project name="LineageOS/android_system_vold" />
+  <remove-project name="LineageOS/android_vendor_lineage" />
+</manifest>
