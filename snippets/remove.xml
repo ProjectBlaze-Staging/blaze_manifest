@@ -23,6 +23,7 @@
   <remove-project name="LineageOS/android_packages_apps_Updater" />
 
   <remove-project name="LineageOS/android_packages_modules_Connectivity" />
+  <remove-project name="LineageOS/android_system_fs_fs_mgr" />
   <remove-project name="LineageOS/android_system_vold" />
   <remove-project name="LineageOS/android_vendor_lineage" />
 </manifest>

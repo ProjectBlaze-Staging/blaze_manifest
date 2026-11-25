@@ -38,5 +38,6 @@
 
   <!-- System & Connectivity -->
   <project path="packages/modules/Connectivity" name="android_packages_modules_Connectivity" groups="pdk-cw-fs,pdk-fs" remote="blaze" revision="17.0" />
+  <project path="system/fs/fs_mgr" name="android_system_fs_fs_mgr" groups="pdk" remote="blaze" revision="17.0" />
   <project path="system/vold" name="android_system_vold" groups="pdk" remote="blaze" revision="17.0" />
 </manifest>
